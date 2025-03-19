@@ -15,13 +15,10 @@ const BlocksSchema = new Schema<Block>({
     default: null 
   },
   
-  
   params: { type: Schema.Types.Mixed, default: null }, 
-
-  
+ 
   conditions: { type: Schema.Types.Mixed, default: null },
 
-  
   variable: { type: String, required: false }, 
   value: { type: Schema.Types.Mixed, required: false } 
 
