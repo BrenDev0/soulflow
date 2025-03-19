@@ -41,9 +41,11 @@ class WorkflowsController {
     addSteps(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const { workflowId, content } = req.body;
+                const { workflowId, content, type, action = null } = req.body;
                 const block = {
-                    content: content
+                    type: type,
+                    content: content,
+                    action: action
                 };
                 const workflow = yield Workflows_1.default.findById(workflowId);
                 if (!workflow) {

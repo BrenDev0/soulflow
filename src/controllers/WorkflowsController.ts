@@ -34,9 +34,11 @@ class WorkflowsController {
 
     async addSteps(req: Request, res: Response): Promise<any> {
         try {
-            const { workflowId, content } = req.body;
+            const { workflowId, content, type, action=null } = req.body;
             const block: Block = {
-                content: content
+                type: type,
+                content: content,
+                action: action
             };
 
             const workflow = await Workflows.findById(workflowId);
