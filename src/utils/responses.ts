@@ -1,0 +1,1 @@
+export const code500 = "Unable to proccess request at this time."
