@@ -14,14 +14,15 @@ class WorkflowsController {
 
     async insterRequest(req: Request, res: Response): Promise<any> {
         try {
-            const { name } = req.body;
+            const { name, variables=[] } = req.body;
 
             if(!name) {
                 return res.status(400).json({"message": this.missingDataMessage})
             }
 
             const newWorkflow = new Workflows({
-                name: name
+                name: name,
+                variables: variables 
             })
 
             await newWorkflow.save();

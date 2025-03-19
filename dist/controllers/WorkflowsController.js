@@ -22,12 +22,13 @@ class WorkflowsController {
     insterRequest(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const { name } = req.body;
+                const { name, variables = [] } = req.body;
                 if (!name) {
                     return res.status(400).json({ "message": this.missingDataMessage });
                 }
                 const newWorkflow = new Workflows_1.default({
-                    name: name
+                    name: name,
+                    variables: variables
                 });
                 yield newWorkflow.save();
                 return res.status(201).json({ "message": "Workflow created" });
