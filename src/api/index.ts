@@ -1,5 +1,6 @@
 import express, { Request, Response, NextFunction} from "express";
 import database from "../config/database";
+import blocksRouter from "../routes/blocks";
 
 const app = express();
 
@@ -22,5 +23,7 @@ app.use(async (req: Request, res: Response, next: NextFunction): Promise<any> =>
         return res.status(500).json({"message": "Unable to process request at this time."})
     }
 })
+
+app.use("/blocks", blocksRouter);
 
 export default app;
