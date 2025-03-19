@@ -6,7 +6,7 @@ const ActionType = ["set_variable", "api_call", "verify_value"] as const;
 
 const BlocksSchema = new Schema<Block>({
   type: { type: String, required: true },
-  content: { type: String, required: true },
+  content: { type: String, default: null },
   
   action: {
     type: String, 

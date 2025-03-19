@@ -38,7 +38,7 @@ const mongoose_1 = __importStar(require("mongoose"));
 const ActionType = ["set_variable", "api_call", "verify_value"];
 const BlocksSchema = new mongoose_1.Schema({
     type: { type: String, required: true },
-    content: { type: String, required: true },
+    content: { type: String, default: null },
     action: {
         type: String,
         enum: ActionType,
