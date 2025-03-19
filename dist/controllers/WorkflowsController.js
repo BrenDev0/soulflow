@@ -30,7 +30,28 @@ class WorkflowsController {
                     name: name
                 });
                 yield newWorkflow.save();
-                return res.status(200).json({ "message": "Workflow created" });
+                return res.status(201).json({ "message": "Workflow created" });
+            }
+            catch (error) {
+                console.log(error);
+                return res.status(500).json({ "message": this.errorMessage });
+            }
+        });
+    }
+    addSteps(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { workflowId, content } = req.body;
+                const block = {
+                    content: content
+                };
+                const workflow = yield Workflows_1.default.findById(workflowId);
+                if (!workflow) {
+                    return res.status(404).json({ "message": "workflow not found" });
+                }
+                workflow.steps.push(block);
+                yield workflow.save();
+                return res.status(200).json({ "message": "Workflow Updated." });
             }
             catch (error) {
                 console.log(error);

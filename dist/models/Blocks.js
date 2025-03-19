@@ -35,7 +35,6 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
 const BlocksSchema = new mongoose_1.Schema({
-    step: { type: Number, required: true },
     content: { type: String, required: true }
 });
 const Blocks = mongoose_1.default.model('Blocks', BlocksSchema);
