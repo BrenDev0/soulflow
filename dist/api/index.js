@@ -34,5 +34,5 @@ app.use((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
         return res.status(500).json({ "message": "Unable to process request at this time." });
     }
 }));
-app.use("/blocks", workflows_1.default);
+app.use("/workflows", workflows_1.default);
 exports.default = app;

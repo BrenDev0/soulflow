@@ -24,6 +24,6 @@ app.use(async (req: Request, res: Response, next: NextFunction): Promise<any> =>
     }
 })
 
-app.use("/blocks", workflowsRouter);
+app.use("/workflows", workflowsRouter);
 
 export default app;
