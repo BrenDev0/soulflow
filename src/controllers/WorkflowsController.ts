@@ -14,7 +14,7 @@ class WorkflowsController {
 
     async insterRequest(req: Request, res: Response): Promise<any> {
         try {
-            const { name, variables=[] } = req.body;
+            const { name, variables={} } = req.body;
 
             if(!name) {
                 return res.status(400).json({"message": this.missingDataMessage})

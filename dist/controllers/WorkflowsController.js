@@ -22,7 +22,7 @@ class WorkflowsController {
     insterRequest(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const { name, variables = [] } = req.body;
+                const { name, variables = {} } = req.body;
                 if (!name) {
                     return res.status(400).json({ "message": this.missingDataMessage });
                 }
