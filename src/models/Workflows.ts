@@ -4,7 +4,7 @@ import Blocks  from "./Blocks";
 
 const WorkflowSchema = new Schema<Workflow>({
     name: { type: String, required: true },
-    steps: [Blocks]
+    steps: {type: [Blocks], default: []}
 });
 
 const Workflows = mongoose.model<Workflow>('Workflows', WorkflowSchema);

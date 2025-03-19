@@ -40,7 +40,7 @@ const mongoose_1 = __importStar(require("mongoose"));
 const Blocks_1 = __importDefault(require("./Blocks"));
 const WorkflowSchema = new mongoose_1.Schema({
     name: { type: String, required: true },
-    steps: [Blocks_1.default]
+    steps: { type: [Blocks_1.default], default: [] }
 });
 const Workflows = mongoose_1.default.model('Workflows', WorkflowSchema);
 exports.default = Workflows;

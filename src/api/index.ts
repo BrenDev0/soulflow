@@ -1,6 +1,6 @@
 import express, { Request, Response, NextFunction} from "express";
 import database from "../config/database";
-import blocksRouter from "../routes/blocks";
+import workflowsRouter from "../routes/workflows";
 
 const app = express();
 
@@ -24,6 +24,6 @@ app.use(async (req: Request, res: Response, next: NextFunction): Promise<any> =>
     }
 })
 
-app.use("/blocks", blocksRouter);
+app.use("/blocks", workflowsRouter);
 
 export default app;
