@@ -2,7 +2,8 @@ import { Request, Response, NextFunction } from 'express';
 
 const webhookWare = async(req: Request, res: Response, next: NextFunction): Promise<any> => {
     try {
-        console.log(req.body)
+        console.log(req.body);
+        return res.status(200).send();
         
         return
         next()

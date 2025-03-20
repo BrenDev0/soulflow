@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const webhookWare = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         console.log(req.body);
+        return res.status(200).send();
         return;
         next();
     }
