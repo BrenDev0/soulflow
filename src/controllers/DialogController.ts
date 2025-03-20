@@ -11,9 +11,16 @@ class DialogController {
     }
     async interact(req: Request, res: Response): Promise<any> {
         try {
-            const twinml = new  twilio.twiml.MessagingResponse();
-            twinml.message("this is a test mesaage")
-            return res.type('text/xml').sendStatus(twinml.toString());
+            const { client, agent, message } = req.body;
+            console.log("interact::::::::::::",req.body)
+
+            await this.twilioClient.messages.create({
+                to: "+529984070079",
+                from: "+525596617293",
+                body: message
+            })
+            
+            return res.status(200).json({"message": "Message sent."})
         } catch (error) {
             console.log(error);
             return res.status(500).json({"message": this.errorMessage})
