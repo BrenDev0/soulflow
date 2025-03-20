@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const webhookWare = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        console.log(req.body);
         const agent = req.body.to;
         const client = req.body.from;
         const message = "this is a test message";
