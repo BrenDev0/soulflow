@@ -2,10 +2,14 @@ import { Request, Response, NextFunction } from 'express';
 
 const webhookWare = async(req: Request, res: Response, next: NextFunction): Promise<any> => {
     try {
-        console.log(req.body);
-        return res.status(200).send();
-        
-        return
+        const agent = req.body.to;
+        const client = req.body.from;
+        const message = "this is a test message";
+        req.body = {
+            agent,
+            client,
+            message
+        }
         next()
     } catch (error) {
         console.log(error)
