@@ -63,9 +63,9 @@ class WorkflowsController {
         try {
             const { blockId } = req.body;
             const block = await Blocks.findById(blockId);
-            // if(!block) {
-            //     return res.status(404).json({"message": "Block not found."})
-            // }
+            if(!block) {
+                return res.status(404).json({"message": "Block not found."})
+            }
 
             return res.status(200).json({"data": block})
         } catch (error) {
