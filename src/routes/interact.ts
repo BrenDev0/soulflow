@@ -7,6 +7,6 @@ const controller = new DialogController();
 
 router.use(webhookWare);
 
-router.post("/interact", controller.interact.bind(controller));
+router.post("/webhook", controller.interact.bind(controller));
 
 export default router;

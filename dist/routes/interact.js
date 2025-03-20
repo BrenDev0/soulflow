@@ -9,5 +9,5 @@ const DialogController_1 = __importDefault(require("../controllers/DialogControl
 const router = express_1.default.Router();
 const controller = new DialogController_1.default();
 router.use(webhook_1.default);
-router.post("/interact", controller.interact.bind(controller));
+router.post("/webhook", controller.interact.bind(controller));
 exports.default = router;
