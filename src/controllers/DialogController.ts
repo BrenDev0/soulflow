@@ -14,12 +14,21 @@ class DialogController {
             const { client, agent, message } = req.body;
             console.log("interact::::::::::::",req.body)
 
-            await this.twilioClient.messages.create({
+            const message1 = await this.twilioClient.messages.create({
                 to: client,
                 from: agent,
                 body: message
             })
             
+            console.log(message1.status)
+            console.log(message1.status)
+            console.log(message1.status)
+            console.log(message1.status)
+            console.log(message1.status)
+            console.log(message1.status)
+            console.log(message1.status)
+            console.log(message1.status)
+            console.log(message1.status)
             return res.status(200).json({"message": "Message sent."})
         } catch (error) {
             console.log(error);
