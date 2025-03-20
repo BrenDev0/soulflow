@@ -23,6 +23,7 @@ class DialogController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { client, agent, message } = req.body;
+                console.log("interact::::::::::::", req.body);
                 yield this.twilioClient.messages.create({
                     to: client,
                     from: agent,

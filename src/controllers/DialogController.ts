@@ -14,6 +14,7 @@ class DialogController {
     async interact(req: Request, res: Response): Promise<any> {
         try {
             const { client, agent, message } = req.body;
+            console.log("interact::::::::::::",req.body)
 
             await this.twilioClient.messages.create({
                 to: client,
