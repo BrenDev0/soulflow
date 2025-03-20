@@ -2,8 +2,6 @@ import { Request, Response } from "express";
 import { code500 } from "../utils/responses";
 import twilio from "twilio";
 
-
-
 class DialogController {
     private errorMessage: string;
     private twilioClient;
@@ -13,16 +11,9 @@ class DialogController {
     }
     async interact(req: Request, res: Response): Promise<any> {
         try {
-            const { client, agent, message } = req.body;
-            console.log("interact::::::::::::",req.body)
-
-            await this.twilioClient.messages.create({
-                to: client,
-                from: agent,
-                body: message
-            })
-            
-            return res.status(200).json({"message": "Message sent."})
+            const twinml = new  twilio.twiml.MessagingResponse();
+            twinml.message("this is a test mesaage")
+            return res.type('text/xml').sendStatus(twinml.toString());
         } catch (error) {
             console.log(error);
             return res.status(500).json({"message": this.errorMessage})
