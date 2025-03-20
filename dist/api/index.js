@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const database_1 = __importDefault(require("../config/database"));
 const workflows_1 = __importDefault(require("../routes/workflows"));
+const interact_1 = __importDefault(require("../routes/interact"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
@@ -35,4 +36,5 @@ app.use((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     }
 }));
 app.use("/workflows", workflows_1.default);
+app.use("/interact", interact_1.default);
 exports.default = app;

@@ -1,6 +1,7 @@
 import express, { Request, Response, NextFunction} from "express";
 import database from "../config/database";
 import workflowsRouter from "../routes/workflows";
+import interactRouter from "../routes/interact";
 
 const app = express();
 
@@ -25,5 +26,6 @@ app.use(async (req: Request, res: Response, next: NextFunction): Promise<any> =>
 })
 
 app.use("/workflows", workflowsRouter);
+app.use("/interact", interactRouter);
 
 export default app;
