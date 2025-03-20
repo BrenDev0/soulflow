@@ -8,5 +8,6 @@ const WorkflowsController_1 = __importDefault(require("../controllers/WorkflowsC
 const router = express_1.default.Router();
 const controller = new WorkflowsController_1.default();
 router.post("/insert", controller.insterRequest.bind(controller));
+router.post("/block", controller.getStep.bind(controller));
 router.put("/update-steps", controller.addSteps.bind(controller));
 exports.default = router;

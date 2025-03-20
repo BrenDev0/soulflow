@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const responses_1 = require("../utils/responses");
 const Workflows_1 = __importDefault(require("../models/Workflows"));
+const Blocks_1 = __importDefault(require("../models/Blocks"));
 class WorkflowsController {
     constructor() {
         this.errorMessage = responses_1.code500;
@@ -55,6 +56,22 @@ class WorkflowsController {
                 workflow.steps.push(block);
                 yield workflow.save();
                 return res.status(200).json({ "message": "Workflow Updated." });
+            }
+            catch (error) {
+                console.log(error);
+                return res.status(500).json({ "message": this.errorMessage });
+            }
+        });
+    }
+    getStep(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { blockId } = req.body;
+                const block = yield Blocks_1.default.findById(blockId);
+                // if(!block) {
+                //     return res.status(404).json({"message": "Block not found."})
+                // }
+                return res.status(200).json({ "data": block });
             }
             catch (error) {
                 console.log(error);

@@ -25,8 +25,8 @@ class DialogController {
                 const { client, agent, message } = req.body;
                 console.log("interact::::::::::::", req.body);
                 yield this.twilioClient.messages.create({
-                    to: client,
-                    from: agent,
+                    to: "(MX)+529984070079",
+                    from: "(MX)+525596617293",
                     body: message
                 });
                 return res.status(200).json({ "message": "Message sent." });
