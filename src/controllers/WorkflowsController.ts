@@ -58,21 +58,6 @@ class WorkflowsController {
             return res.status(500).json({"message": this.errorMessage});
         }
     }
-
-    async getStep(req: Request, res: Response): Promise<any> {
-        try {
-            const { blockId } = req.body;
-            const block = await Blocks.findById(blockId);
-            if(!block) {
-                return res.status(404).json({"message": "Block not found."})
-            }
-
-            return res.status(200).json({"data": block})
-        } catch (error) {
-            console.log(error)
-            return res.status(500).json({"message": this.errorMessage});
-        }
-    }
 }
 
 export default WorkflowsController;
