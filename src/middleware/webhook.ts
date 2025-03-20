@@ -3,8 +3,8 @@ import { Request, Response, NextFunction } from 'express';
 const webhookWare = async(req: Request, res: Response, next: NextFunction): Promise<any> => {
     try {
         console.log(req.body);
-        const agent = req.body.to;
-        const client = req.body.from;
+        const agent = req.body.To;
+        const client = req.body.From;
         const message = "this is a test message";
         req.body = {
             agent,

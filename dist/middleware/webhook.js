@@ -12,8 +12,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const webhookWare = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         console.log(req.body);
-        const agent = req.body.to;
-        const client = req.body.from;
+        const agent = req.body.To;
+        const client = req.body.From;
         const message = "this is a test message";
         req.body = {
             agent,
