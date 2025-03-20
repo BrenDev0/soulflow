@@ -1,28 +1,12 @@
-export interface Block {
-    type: string;  
-    content: string;  
-    
-    action: 'set_variable' | 'api_call' | 'verify_value' | null; 
-    
-    params?: {  
-      url?: string;
-      method?: string;
-      headers?: Record<string, string>;  
-    };
-  
-    conditions?: {  
-      field: string;
-      operator: string;
-      value: any;
-    };
-  
-    variable?: string;  
-    value?: any;  
-  }
+import mongoose, { Document } from 'mongoose';
+export interface Block extends Document {
+  agent: mongoose.Types.ObjectId
+  type: string,
+  template: string;
+}
   
 
-export interface Workflow {
-    name: string;
-    steps: Block[],
-    variables: any[]
+export interface Agent extends Document {
+  apiKey: string;
+  variables: string[];
 }
