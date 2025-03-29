@@ -18,7 +18,7 @@ const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 //config
-const dbPromise = (0, database_1.default)();
+const dbPromise = database_1.default.init();
 let isInitialized = false;
 app.use((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -30,7 +30,7 @@ app.use((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     }
     catch (error) {
         console.log(error);
-        return res.status(500).json({ "message": "Unable to process request at this time." });
+        return res.status(500).json({ "message": "Connection error" });
     }
 }));
 exports.default = app;
