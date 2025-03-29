@@ -1,5 +1,5 @@
 import express, { Request, Response, NextFunction} from "express";
-import database from "./config/database";
+import databaseInstance from "./config/database";
 
 const app = express();
 
@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //config
-const dbPromise = database();
+const dbPromise = databaseInstance.init();
 let isInitialized = false;
 app.use(async (req: Request, res: Response, next: NextFunction): Promise<any> => {
     try {
@@ -19,7 +19,7 @@ app.use(async (req: Request, res: Response, next: NextFunction): Promise<any> =>
         next();
     } catch (error) {
         console.log(error);
-        return res.status(500).json({"message": "Unable to process request at this time."})
+        return res.status(500).json({"message": "Connection error"})
     }
 })
 

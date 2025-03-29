@@ -13,23 +13,42 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
-const database = () => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const mongoUrl = process.env.MONGO_URL;
-        if (!mongoUrl) {
-            throw new Error("Variables error");
+class Database {
+    constructor() {
+        this.databaseConnected = false;
+    }
+    static getInstance() {
+        if (!Database.instance) {
+            Database.instance = new Database();
         }
-        if (mongoose_1.default.connection.readyState === 1) {
-            console.log("Database is already connected");
+        return Database.instance;
+    }
+    init() {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (!this.databaseConnected) {
+                yield this.connect();
+                this.databaseConnected = true;
+            }
             return;
-        }
-        yield mongoose_1.default.connect(mongoUrl);
-        console.log("Database connected");
-        return;
+        });
     }
-    catch (error) {
-        console.log(error);
-        process.exit(1);
+    connect() {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const mongoUrl = process.env.MONGO_URL;
+                if (!mongoUrl) {
+                    throw new Error("Variables error");
+                }
+                yield mongoose_1.default.connect(mongoUrl);
+                console.log("Database connected");
+                return;
+            }
+            catch (error) {
+                console.log(error);
+                process.exit(1);
+            }
+        });
     }
-});
-exports.default = database;
+}
+const databaseInstance = Database.getInstance();
+exports.default = databaseInstance;
